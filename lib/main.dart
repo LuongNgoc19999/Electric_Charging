@@ -1,5 +1,6 @@
 import 'package:electric_charging/presentation/view_models/login_viewmodel.dart';
-import 'package:electric_charging/presentation/views/login_screen.dart';
+import 'package:electric_charging/presentation/views/login/login_screen.dart';
+import 'package:electric_charging/presentation/views/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -18,7 +19,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginViewModel(loginUser)),
       ],
-      child: MaterialApp(home: LoginScreen()),
+      child: MaterialApp(home: MainScreen()),
     ),
   );
 }

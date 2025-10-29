@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../view_models/login_viewmodel.dart';
-import 'home_screen.dart';
+import '../../view_models/login_viewmodel.dart';
+import '../main/main_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final emailController = TextEditingController();
@@ -48,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => HomeScreen(user: viewModel.user!),
+                        builder: (_) => MainScreen(/*user: viewModel.user!*/),
                       ),
                     );
                   }
