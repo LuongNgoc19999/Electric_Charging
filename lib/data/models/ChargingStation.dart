@@ -31,7 +31,7 @@ static List<ChargingStation> list() {
         address: "address",
         totalSocket: 40,
         usingSocket: 12,
-        image: "image",
+        image: "https://tl.cdnchinhphu.vn/344445545208135680/2023/7/4/b80ecce260c7b099e9d6-16884694045491028269359.jpg",
         desc: "desc",
       ),
       ChargingStation(
@@ -42,7 +42,7 @@ static List<ChargingStation> list() {
         address: "address",
         totalSocket: 40,
         usingSocket: 12,
-        image: "image",
+        image: "https://tl.cdnchinhphu.vn/344445545208135680/2023/7/4/b80ecce260c7b099e9d6-16884694045491028269359.jpg",
         desc: "desc",
       ),
       ChargingStation(
@@ -53,7 +53,7 @@ static List<ChargingStation> list() {
         address: "address",
         totalSocket: 40,
         usingSocket: 12,
-        image: "image",
+        image: "https://tl.cdnchinhphu.vn/344445545208135680/2023/7/4/b80ecce260c7b099e9d6-16884694045491028269359.jpg",
         desc: "desc",
       ),
       ChargingStation(
@@ -64,7 +64,7 @@ static List<ChargingStation> list() {
         address: "address",
         totalSocket: 40,
         usingSocket: 12,
-        image: "image",
+        image: "https://tl.cdnchinhphu.vn/344445545208135680/2023/7/4/b80ecce260c7b099e9d6-16884694045491028269359.jpg",
         desc: "desc",
       ),
       ChargingStation(
@@ -75,7 +75,7 @@ static List<ChargingStation> list() {
         address: "address",
         totalSocket: 40,
         usingSocket: 12,
-        image: "image",
+        image: "https://tl.cdnchinhphu.vn/344445545208135680/2023/7/4/b80ecce260c7b099e9d6-16884694045491028269359.jpg",
         desc: "desc",
       ),
       ChargingStation(
@@ -86,7 +86,7 @@ static List<ChargingStation> list() {
         address: "address",
         totalSocket: 40,
         usingSocket: 12,
-        image: "image",
+        image: "https://tl.cdnchinhphu.vn/344445545208135680/2023/7/4/b80ecce260c7b099e9d6-16884694045491028269359.jpg",
         desc: "desc",
       ),
       ChargingStation(
@@ -97,7 +97,7 @@ static List<ChargingStation> list() {
         address: "address",
         totalSocket: 40,
         usingSocket: 12,
-        image: "image",
+        image: "https://tl.cdnchinhphu.vn/344445545208135680/2023/7/4/b80ecce260c7b099e9d6-16884694045491028269359.jpg",
         desc: "desc",
       ),
     ];

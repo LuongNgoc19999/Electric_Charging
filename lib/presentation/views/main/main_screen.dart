@@ -2,6 +2,7 @@ import 'package:electric_charging/presentation/views/main/charing/charing_screen
 import 'package:electric_charging/presentation/views/main/history/history_screen.dart';
 import 'package:electric_charging/presentation/views/main/home/home_screen.dart';
 import 'package:electric_charging/presentation/views/main/personal/personal_screen.dart';
+import 'package:electric_charging/presentation/views/scan/scan_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -49,6 +50,12 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           debugPrint("Bấm nút giữa");
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ScanScreen(/*user: viewModel.user!*/),
+            ),
+          );
         },
         backgroundColor: Colors.green,
         shape: const CircleBorder(),
