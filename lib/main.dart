@@ -19,7 +19,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginViewModel(loginUser)),
       ],
-      child: MaterialApp(home: MainScreen()),
+      child: MaterialApp(home: LoginScreen()),
     ),
   );
 }

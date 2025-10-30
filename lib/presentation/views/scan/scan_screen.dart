@@ -10,54 +10,88 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanScreenState extends State<ScanScreen> {
   bool isScanned = false;
+  final MobileScannerController cameraController = MobileScannerController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Quét mã QR"),
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
         centerTitle: true,
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
       ),
-      body: Stack(
+      body: Column(
         children: [
-          // 🔍 Camera quét QR
-          MobileScanner(
-            onDetect: (capture) {
-              if (isScanned) return; // tránh quét lặp lại
-              final List<Barcode> barcodes = capture.barcodes;
-              final Barcode barcode = barcodes.first;
-              final String? code = barcode.rawValue;
+          const SizedBox(height: 60),
 
-              if (code != null) {
-                setState(() => isScanned = true);
-                _showResultDialog(code);
-              }
-            },
-          ),
-
-          // 🎯 Khung định vị QR
+          // 🟩 Camera hiển thị ở giữa
           Center(
             child: Container(
-              width: 250,
-              height: 250,
+              width: 280,
+              height: 280,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.greenAccent, width: 3),
                 borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Colors.green, width: 3),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.green.withOpacity(0.1),
+                    blurRadius: 8,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: MobileScanner(
+                  controller: cameraController,
+                  // allowDuplicates: false,
+                  onDetect: (barcodeCapture) {
+                    final barcode = barcodeCapture.barcodes.first;
+                    final String? code = barcode.rawValue;
+
+                    if (code == null || isScanned) return;
+
+                    setState(() => isScanned = true);
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Đã quét: $code')),
+                    );
+
+                    // TODO: xử lý dữ liệu QR ở đây
+                  },
+                ),
               ),
             ),
           ),
 
-          // 📝 Hướng dẫn
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 60),
-              child: Text(
-                "Đưa mã QR vào khung để quét",
-                style: const TextStyle(color: Colors.white, fontSize: 16),
+          const SizedBox(height: 40),
+
+          // 🔘 Nút bật/tắt flash và camera
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.flash_on, color: Colors.green),
+                onPressed: () => cameraController.toggleTorch(),
               ),
+              const SizedBox(width: 20),
+              IconButton(
+                icon: const Icon(Icons.cameraswitch, color: Colors.green),
+                onPressed: () => cameraController.switchCamera(),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 20),
+
+          const Text(
+            "Đặt mã QR vào khung để quét",
+            style: TextStyle(
+              color: Colors.black87,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],
