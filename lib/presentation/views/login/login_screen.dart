@@ -1,3 +1,4 @@
+import 'package:electric_charging/presentation/views/register/Register.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,12 +17,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isPasswordVisible = false;
-@override
+
+  @override
   void initState() {
     super.initState();
     emailController.text = "ngoc";
     emailController.text = "ngoc";
   }
+
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<LoginViewModel>();
@@ -103,7 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   : Icons.visibility_off,
                             ),
                             onPressed: () {
-                              setState(() => isPasswordVisible = !isPasswordVisible);
+                              setState(
+                                () => isPasswordVisible = !isPasswordVisible,
+                              );
                             },
                           ),
                           filled: true,
@@ -155,7 +160,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => MainScreen(/*user: viewModel.user!*/),
+                                  builder: (_) =>
+                                      MainScreen(/*user: viewModel.user!*/),
                                 ),
                               );
                             }
@@ -176,7 +182,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           const Text("Chưa có tài khoản? "),
                           GestureDetector(
                             onTap: () {
-                              // TODO: chuyển sang trang đăng ký
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => RegisterScreen(),
+                                ),
+                              );
                             },
                             child: const Text(
                               "Đăng ký ngay",
