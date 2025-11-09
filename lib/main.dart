@@ -2,6 +2,7 @@ import 'package:electric_charging/l10n/app_localizations.dart';
 import 'package:electric_charging/presentation/view_models/login_viewmodel.dart';
 import 'package:electric_charging/presentation/view_models/register_viewmodel.dart';
 import 'package:electric_charging/presentation/views/login/login_screen.dart';
+import 'package:electric_charging/presentation/views/map/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:http/http.dart' as http;

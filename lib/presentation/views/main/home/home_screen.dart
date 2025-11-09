@@ -76,22 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
             )
                 : ListView.builder(
               itemCount: _filteredItems.length,
-              // separatorBuilder: (_, __) => const Divider(height: 1),
               itemBuilder: (context, index) {
                 final item = _filteredItems[index];
-                return StationItem(item: item); //ListTile(
-                //   leading: const Icon(
-                //     Icons.ev_station,
-                //     color: Colors.green,
-                //   ),
-                //   title: Text(item.title),
-                //   subtitle: const Text("Bấm để xem chi tiết"),
-                //   onTap: () {
-                //     // ScaffoldMessenger.of(context).showSnackBar(
-                //     //   SnackBar(content: Text("Bạn chọn: $item")),
-                //     // );
-                //   },
-                // );
+                return StationItem(item: item);
               },
             ),
           ),
