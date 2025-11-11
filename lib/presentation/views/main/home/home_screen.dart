@@ -1,5 +1,6 @@
 import 'package:electric_charging/data/models/ChargingStation.dart';
 import 'package:electric_charging/presentation/views/charging_detail/ChargingDetail.dart';
+import 'package:electric_charging/presentation/views/charging_detail/StationDetail.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -144,10 +145,10 @@ class StationItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           debugPrint("Chargingdetail");
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => Chargingdetail(/*user: viewModel.user!*/),
+              builder: (_) => StationDetailScreen(/*user: viewModel.user!*/),
             ),
           );
         },

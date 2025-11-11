@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           debugPrint("Bấm nút giữa");
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
             MaterialPageRoute(
               builder: (_) => ScanScreen(/*user: viewModel.user!*/),
