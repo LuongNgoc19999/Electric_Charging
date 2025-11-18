@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../data/models/ChargingStation.dart';
+import '../main/home/componient/StatusItem.dart';
 import '../main/home/home_screen.dart';
 
 class MapScreen extends StatefulWidget {

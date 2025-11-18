@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../data/models/ChargingSocket.dart';
+
 class Chargingdetail extends StatefulWidget {
   final List<ChargingSocket> sockets = [
-  ChargingSocket(id: '1', powerKw: 22, isAvailable: true),
-  ChargingSocket(id: '2', powerKw: 11, isAvailable: false),
-  ChargingSocket(id: '3', powerKw: 7.4, isAvailable: true),
+  ChargingSocket(id: '1', powerKw: 22, isAvailable: true, price: 1000),
+  ChargingSocket(id: '2', powerKw: 11, isAvailable: false, price: 1000),
+  ChargingSocket(id: '3', powerKw: 7.4, isAvailable: true, price: 1000),
   ];
   Chargingdetail({super.key});
 
@@ -59,16 +61,4 @@ class _ChargingdetailState extends State<Chargingdetail> {
       ),
     );
   }
-}
-
-class ChargingSocket {
-  final String id;
-  final double powerKw;
-  final bool isAvailable;
-
-  ChargingSocket({
-    required this.id,
-    required this.powerKw,
-    required this.isAvailable,
-  });
 }
