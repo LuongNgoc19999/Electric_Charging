@@ -5,19 +5,46 @@ import '../../../../../data/models/ChargingStation.dart';
 import '../../../charging_detail/StationDetail.dart';
 
 class StationItem extends StatelessWidget {
-  final ChargingStation item;
 
-  const StationItem({super.key, required this.item});
+  final ChargingStation item;
+  // final String status;
+  // final String imagePath;
+  // final String title;
+  // final String address;
+  // final int slot;
+  // final String power;
+  // final String distance;
+
+  const StationItem({
+    super.key,
+    required this.item,
+    // required this.status,
+    // required this.imagePath,
+    // required this.title,
+    // required this.address,
+    // required this.slot,
+    // required this.power,
+    // required this.distance,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 6,
+            offset: Offset(0, 3),
+          )
+        ],
+      ),
       child: InkWell(
         onTap: () {
-          debugPrint("Chargingdetail");
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -25,132 +52,104 @@ class StationItem extends StatelessWidget {
             ),
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
+        children: [
+          // image
+          Stack(
             children: [
-              // 🖼 Ảnh tòa nhà
               ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(16),
                 child: Image.network(
                   item.image,
-                  height: 180,
-                  width: double.infinity,
+                  width: 110,
+                  height: 90,
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(height: 12),
-
-              // 🏢 Tên tòa nhà + khoảng cách
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Text(
-                      item.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+              Positioned(
+                top: 0,
+                left: 0,
+                child: Container(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF8CE260),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
                     ),
                   ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.location_on,
-                        color: Colors.red,
-                        size: 18,
-                      ),
-                      Text(
-                        '1.4 km',
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 6),
-
-              // 📍 Địa chỉ
-              Row(
-                children: [
-                  const Icon(Icons.place, color: Colors.grey, size: 18),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: Text(
-                      item.address,
-                      style: const TextStyle(color: Colors.black87),
-                      overflow: TextOverflow.ellipsis,
+                  child: Text(
+                    "Free",
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                ],
-              ),
-
-              const SizedBox(height: 8),
-
-              // 📝 Mô tả
-              Text(
-                item.desc,
-                style: const TextStyle(color: Colors.grey, fontSize: 14),
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.green.withOpacity(0.1),
-                      border: Border.all(color: Colors.green, width: 1.5),
-                      borderRadius: BorderRadius.circular(8), // bo góc
-                    ),
-                    child: Text(
-                      "Trống ${item.usingSocket}/${item.totalSocket} ổ",
-                      style: TextStyle(
-                        color: Colors.green, // chữ xanh
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                  Expanded(child: SizedBox()),
-                  // 🔗 Nút mở Google Map
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      onPressed: () => _openMap,
-                      icon: const Icon(Icons.map, color: Colors.white),
-                      label: const Text("Xem bản đồ"),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              )
             ],
           ),
-        ),
+
+          const SizedBox(width: 12),
+
+          // info
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item.title,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+
+                const SizedBox(height: 4),
+
+                Text(
+                  item.address,
+                  style: TextStyle(
+                      fontSize: 14, color: Colors.grey.shade700),
+                ),
+
+                const SizedBox(height: 6),
+
+                Row(
+                  children: [
+                    _info(Icons.ev_station, "${item.usingSocket}/${item.totalSocket}"),
+                    SizedBox(width: 10),
+                    _info(Icons.bolt, "7W"),
+                    SizedBox(width: 10),
+                    _info(Icons.place, "7 Km"),
+                  ],
+                )
+              ],
+            ),
+          ),
+
+          // navigate icon
+          Container(
+            padding: EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: Color(0xFFE9FAD7),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(Icons.navigation, size: 20, color: Colors.green),
+          )
+        ],
       ),
+      )
     );
   }
 
-  Future<void> _openMap() async {
-    // final uri = Uri.parse(mapUrl);
-    // if (await canLaunchUrl(uri)) {
-    //   await launchUrl(uri, mode: LaunchMode.externalApplication);
-    // } else {
-    //   debugPrint("Không thể mở bản đồ: $mapUrl");
-    // }
+  Widget _info(IconData icon, String text) {
+    return Row(
+      children: [
+        Icon(icon, size: 16, color: Colors.grey.shade700),
+        SizedBox(width: 4),
+        Text(text, style: TextStyle(fontSize: 13)),
+      ],
+    );
   }
 }

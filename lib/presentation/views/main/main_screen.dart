@@ -2,6 +2,7 @@ import 'package:electric_charging/presentation/views/main/charing/charing_screen
 import 'package:electric_charging/presentation/views/main/history/history_screen.dart';
 import 'package:electric_charging/presentation/views/main/home/home_screen.dart';
 import 'package:electric_charging/presentation/views/main/personal/personal_screen.dart';
+import 'package:electric_charging/presentation/views/map/map.dart';
 import 'package:electric_charging/presentation/views/scan/scan_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,10 +19,11 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
 
-  final List<String> _titles = ['Trang chủ', 'Sạc', 'Lịch sử', 'Tài khoản'];
+  final List<String> _titles = ['Trang chủ', 'Bản đồ', 'Lịch sử', 'Tài khoản'];
   final List<IconData> _icons = [
     Icons.home,
-    Icons.electric_scooter,
+    Icons.map,
+    // Icons.electric_scooter,
     Icons.history,
     Icons.person,
   ];
@@ -35,11 +37,12 @@ class _MainScreenState extends State<MainScreen> {
           // SafeArea(
           //   child:
           PageView(
+            physics: const NeverScrollableScrollPhysics(),
             controller: _pageController,
             onPageChanged: (index) => setState(() => _selectedIndex = index),
             children: const [
               HomeScreen(),
-              CharingScreen(),
+              MapScreen(),
               HistoryScreen(),
               PersonalScreen(),
             ],

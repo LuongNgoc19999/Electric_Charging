@@ -5,8 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../data/models/ChargingStation.dart';
-import '../main/home/componient/StatusItem.dart';
-import '../main/home/home_screen.dart';
+import 'componient/StationDetailItem.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -194,7 +193,7 @@ class _MapScreenState extends State<MapScreen> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (_) {
-        return StationItem(item: place);
+        return StationDetailItem(item: place);
       },
     );
   }

@@ -55,9 +55,9 @@ class _ScanScreenState extends State<ScanScreen> {
 
                     setState(() => isScanned = true);
 
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Đã quét: $code')),
-                    );
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text('Đã quét: $code')));
 
                     // TODO: xử lý dữ liệu QR ở đây
                   },
@@ -94,6 +94,11 @@ class _ScanScreenState extends State<ScanScreen> {
               fontWeight: FontWeight.w500,
             ),
           ),
+
+          const SizedBox(height: 20),
+          InkWell(onTap: () {
+
+          }, child: Icon(Icons.qr_code, size: 64)),
         ],
       ),
     );
