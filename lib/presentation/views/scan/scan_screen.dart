@@ -1,3 +1,4 @@
+import 'package:electric_charging/presentation/views/select_charging/select_charging.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -11,6 +12,12 @@ class ScanScreen extends StatefulWidget {
 class _ScanScreenState extends State<ScanScreen> {
   bool isScanned = false;
   final MobileScannerController cameraController = MobileScannerController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    cameraController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,9 +103,15 @@ class _ScanScreenState extends State<ScanScreen> {
           ),
 
           const SizedBox(height: 20),
-          InkWell(onTap: () {
-
-          }, child: Icon(Icons.qr_code, size: 64)),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => SelectCharging()),
+              );
+            },
+            child: Icon(Icons.qr_code, size: 64),
+          ),
         ],
       ),
     );

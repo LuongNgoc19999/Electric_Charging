@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../deposit/deposit_screen.dart';
 
 class PersonalScreen extends StatelessWidget {
   const PersonalScreen({super.key});
@@ -16,10 +17,7 @@ class PersonalScreen extends StatelessWidget {
     };
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Tài khoản của tôi"),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text("Tài khoản của tôi"), centerTitle: true),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -34,16 +32,10 @@ class PersonalScreen extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               "Lương Hữu Ngọc",
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
-            Text(
-              "ngoc@gmail.com",
-              style: TextStyle(color: Colors.grey[600]),
-            ),
+            Text("ngoc@gmail.com", style: TextStyle(color: Colors.grey[600])),
 
             const SizedBox(height: 24),
 
@@ -79,7 +71,10 @@ class PersonalScreen extends StatelessWidget {
                         icon: const Icon(Icons.add_circle_outline),
                         label: const Text("Nạp tiền"),
                         onPressed: () {
-                          // TODO: Chuyển sang màn nạp tiền
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => DepositScreen()),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -101,16 +96,35 @@ class PersonalScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  _infoItem(Icons.electric_scooter, "Phương tiện", "Vinfast VF8"),
-                  _infoItem(Icons.history, "Lịch sử giao dịch", "Xem chi tiết", onTap: () {
-                    // TODO: Điều hướng sang lịch sử giao dịch
-                  }),
-                  _infoItem(Icons.settings, "Cài đặt", "Tùy chỉnh tài khoản", onTap: () {
-                    // TODO: Mở trang cài đặt
-                  }),
-                  _infoItem(Icons.logout, "Đăng xuất", "Thoát khỏi tài khoản", onTap: () {
-                    // TODO: Xử lý logout
-                  }),
+                  _infoItem(
+                    Icons.electric_scooter,
+                    "Phương tiện",
+                    "Vinfast VF8",
+                  ),
+                  _infoItem(
+                    Icons.history,
+                    "Lịch sử giao dịch",
+                    "Xem chi tiết",
+                    onTap: () {
+                      // TODO: Điều hướng sang lịch sử giao dịch
+                    },
+                  ),
+                  _infoItem(
+                    Icons.settings,
+                    "Cài đặt",
+                    "Tùy chỉnh tài khoản",
+                    onTap: () {
+                      // TODO: Mở trang cài đặt
+                    },
+                  ),
+                  _infoItem(
+                    Icons.logout,
+                    "Đăng xuất",
+                    "Thoát khỏi tài khoản",
+                    onTap: () {
+                      // TODO: Xử lý logout
+                    },
+                  ),
                 ],
               ),
             ),
@@ -122,7 +136,12 @@ class PersonalScreen extends StatelessWidget {
     );
   }
 
-  Widget _infoItem(IconData icon, String title, String subtitle, {VoidCallback? onTap}) {
+  Widget _infoItem(
+    IconData icon,
+    String title,
+    String subtitle, {
+    VoidCallback? onTap,
+  }) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 6),
       elevation: 2,
