@@ -2,6 +2,7 @@ import 'package:electric_charging/l10n/app_localizations.dart';
 import 'package:electric_charging/presentation/view_models/login_viewmodel.dart';
 import 'package:electric_charging/presentation/view_models/register_viewmodel.dart';
 import 'package:electric_charging/presentation/views/login/login_screen.dart';
+import 'package:electric_charging/presentation/views/login_webview/login_webview_screen.dart';
 import 'package:electric_charging/presentation/views/map/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,7 +33,7 @@ void main() {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [Locale('en', ''), Locale('vn', '')],
-        home: LoginScreen(),
+        home: LoginWebViewPage(),
       ),
     ),
   );
