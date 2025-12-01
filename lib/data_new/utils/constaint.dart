@@ -1,0 +1,1 @@
+const stationUrl = "http://146.196.65.9/api/management/stations/all";

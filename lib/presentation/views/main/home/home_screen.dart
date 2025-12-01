@@ -1,6 +1,8 @@
 import 'package:electric_charging/data/models/ChargingStation.dart';
+import 'package:electric_charging/data_new/models/StationModel.dart';
 import 'package:electric_charging/presentation/views/charging_detail/ChargingDetail.dart';
 import 'package:electric_charging/presentation/views/charging_detail/StationDetail.dart';
+import 'package:electric_charging/presentation/views/main/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 import 'componient/StatusItem.dart';
@@ -13,33 +15,45 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late HomeViewModel viewModel;
   final TextEditingController _searchController = TextEditingController();
 
   // Danh sách mẫu (sau có thể thay bằng dữ liệu từ API)
-  final List<ChargingStation> _allItems = ChargingStation.list();
+  final List<StationModel> _allItems = [];
 
-  List<ChargingStation> _filteredItems = [];
+  List<StationModel> _filteredItems = [];
 
   @override
   void initState() {
-    // TODO: implement initState
+    viewModel = HomeViewModel();
+    viewModel.getListStation();
+    observeData();
     super.initState();
-
     _filteredItems = _allItems; // mặc định hiển thị tất cả
     _searchController.addListener(_onSearchChanged);
+  }
+
+  void observeData() {
+    viewModel.stationModels.stream.listen((songs) {
+      setState(() {
+        _allItems.addAll(songs);
+        _filteredItems = _allItems;
+      });
+    });
   }
 
   void _onSearchChanged() {
     final keyword = _searchController.text.toLowerCase();
     setState(() {
       _filteredItems = _allItems
-          .where((item) => item.title.toLowerCase().contains(keyword))
+          .where((item) => item.name.toLowerCase().contains(keyword))
           .toList();
     });
   }
 
   @override
   void dispose() {
+    viewModel.stationModels.close(); //giải phóng bộ nhớ
     _searchController.dispose();
     super.dispose();
   }

@@ -1,6 +1,8 @@
 class StationModel {
   StationModel({
     required this.id,
+    required this.createdAt,
+    required this.updatedAt,
     required this.name,
     required this.address,
     required this.city,
@@ -10,10 +12,11 @@ class StationModel {
     required this.imageUrl,
     required this.isActive,
     required this.availablePorts,
-    required this.totalPorts,
   });
 
   int id;
+  String createdAt;
+  String updatedAt;
   String name;
   String address;
   String city;
@@ -23,7 +26,6 @@ class StationModel {
   String imageUrl;
   bool isActive;
   int availablePorts;
-  int totalPorts;
 
   @override
   bool operator ==(Object other) =>

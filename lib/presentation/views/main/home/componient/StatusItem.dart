@@ -1,4 +1,5 @@
 
+import 'package:electric_charging/data_new/models/StationModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../data/models/ChargingStation.dart';
@@ -6,7 +7,7 @@ import '../../../charging_detail/StationDetail.dart';
 
 class StationItem extends StatelessWidget {
 
-  final ChargingStation item;
+  final StationModel item;
   // final String status;
   // final String imagePath;
   // final String title;
@@ -60,7 +61,7 @@ class StationItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(
-                  item.image,
+                  item.imageUrl,
                   width: 110,
                   height: 90,
                   fit: BoxFit.cover,
@@ -100,7 +101,7 @@ class StationItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  item.title,
+                  item.name,
                   style: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold),
                 ),
@@ -117,7 +118,7 @@ class StationItem extends StatelessWidget {
 
                 Row(
                   children: [
-                    _info(Icons.ev_station, "${item.usingSocket}/${item.totalSocket}"),
+                    _info(Icons.ev_station, ""/*"${item.usingSocket}/${item.totalSocket}"*/),
                     SizedBox(width: 10),
                     _info(Icons.bolt, "7W"),
                     SizedBox(width: 10),

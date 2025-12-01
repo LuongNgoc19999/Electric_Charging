@@ -1,8 +1,10 @@
+import 'package:electric_charging/data_new/source/remote_data_source.dart';
 import 'package:electric_charging/l10n/app_localizations.dart';
 import 'package:electric_charging/presentation/view_models/login_viewmodel.dart';
 import 'package:electric_charging/presentation/view_models/register_viewmodel.dart';
 import 'package:electric_charging/presentation/views/login/login_screen.dart';
 import 'package:electric_charging/presentation/views/login_webview/login_webview_screen.dart';
+import 'package:electric_charging/presentation/views/main/home/home_viewmodel.dart';
 import 'package:electric_charging/presentation/views/map/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -11,9 +13,14 @@ import 'package:provider/provider.dart';
 
 import 'data/data_sources/user_remote_data_source.dart';
 import 'data/repositories/user_repository_impl.dart';
+import 'data_new/repository/charging_repository.dart';
 import 'domain/usecases/login_user.dart';
 
 void main() {
+  final dataSource = RemoteDataSource();
+  final chargingRepository = ChargingRepositoryImpl();
+
+
   final remoteDataSource = UserRemoteDataSourceImpl(http.Client());
   final repository = UserRepositoryImpl(remoteDataSource);
   final loginUser = LoginUser(repository);
