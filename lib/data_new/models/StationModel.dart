@@ -1,8 +1,10 @@
+import 'package:electric_charging/data_new/models/ChargingPortModel.dart';
+
 class StationModel {
   StationModel({
     required this.id,
-    required this.createdAt,
-    required this.updatedAt,
+    // required this.createdAt,
+    // required this.updatedAt,
     required this.name,
     required this.address,
     required this.city,
@@ -11,12 +13,15 @@ class StationModel {
     required this.longitude,
     required this.imageUrl,
     required this.isActive,
+    required this.distance,
     required this.availablePorts,
+    required this.totalPorts,
+    required this.chargingPorts,
   });
 
   int id;
-  String createdAt;
-  String updatedAt;
+  // String createdAt;
+  // String updatedAt;
   String name;
   String address;
   String city;
@@ -25,7 +30,11 @@ class StationModel {
   double longitude;
   String imageUrl;
   bool isActive;
+  double? distance;
   int availablePorts;
+  int totalPorts;
+  List<ChargingPortModel> chargingPorts;
+
 
   @override
   bool operator ==(Object other) =>

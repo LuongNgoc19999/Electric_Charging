@@ -65,7 +65,33 @@ class StationItem extends StatelessWidget {
                   width: 110,
                   height: 90,
                   fit: BoxFit.cover,
-                ),
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+
+                    return Container(
+                      width: 110,
+                      height: 90,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const CircularProgressIndicator(strokeWidth: 2),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      width: 110,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      alignment: Alignment.center,
+                      child: const Icon(Icons.broken_image, size: 32, color: Colors.grey),
+                    );
+                  },
+                )
               ),
               Positioned(
                 top: 0,
