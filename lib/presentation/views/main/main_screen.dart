@@ -2,9 +2,12 @@ import 'package:electric_charging/presentation/views/main/charing/charing_screen
 import 'package:electric_charging/presentation/views/main/history/history_screen.dart';
 import 'package:electric_charging/presentation/views/main/home/home_screen.dart';
 import 'package:electric_charging/presentation/views/main/personal/personal_screen.dart';
+import 'package:electric_charging/presentation/views/main/user_info/user_info_screen.dart' hide UserRemoteEntity;
 import 'package:electric_charging/presentation/views/map/map.dart';
 import 'package:electric_charging/presentation/views/scan/scan_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../../data_new/entity/remote/UserRemoteEntity.dart';
 
 class MainScreen extends StatefulWidget {
   // final User user;
@@ -40,11 +43,11 @@ class _MainScreenState extends State<MainScreen> {
             physics: const NeverScrollableScrollPhysics(),
             controller: _pageController,
             onPageChanged: (index) => setState(() => _selectedIndex = index),
-            children: const [
-              HomeScreen(),
-              MapScreen(),
-              HistoryScreen(),
-              PersonalScreen(),
+            children: [
+              const HomeScreen(),
+              const MapScreen(),
+              const HistoryScreen(),
+              UserInfoScreen(user: UserRemoteEntity(id: 0, keycloakUserId: 'keycloakUserId', name: 'Ngọc', email: 'ngoclhsferfjoic', phoneNumber: '01234567', avatarUrl: 'https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D', walletBalance: '10000000', isActive: true)),
             ],
           ),
       // ),
