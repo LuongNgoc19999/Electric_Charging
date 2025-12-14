@@ -40,7 +40,7 @@ void main() {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [Locale('en', ''), Locale('vn', '')],
-        home: LoginScreen(),
+        home: LoginWebViewPage(),
       ),
     ),
   );
