@@ -1,3 +1,5 @@
+import 'package:electric_charging/data_new/models/ChargingPortModel.dart';
+import 'package:electric_charging/presentation/views/select_charging/select_charging_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 import '../main/charing/charging_wave_screen.dart';
@@ -11,6 +13,8 @@ class SelectCharging extends StatefulWidget {
 
 class _SelectChargingState extends State<SelectCharging>
     with TickerProviderStateMixin {
+  List<ChargingPortModel> ports = [];
+  late SelectChargingViewmodel viewModel;
   int timeMinutes = 0;
   int moneyPerMinute = 200; // ví dụ: 200đ / phút
   int extraFee = 0;
@@ -23,6 +27,9 @@ class _SelectChargingState extends State<SelectCharging>
 
   @override
   void initState() {
+    viewModel = SelectChargingViewmodel();
+    viewModel.getListNode();
+    obseverData();
     super.initState();
     subTabController = TabController(length: 4, vsync: this);
   }
@@ -175,8 +182,8 @@ class _SelectChargingState extends State<SelectCharging>
       ),
       child: Row(
         children: [
-          _buildModeButton("Sạc đầy", Icons.battery_full, 0),
-          _buildModeButton("Chế độ khác", Icons.tune, 1),
+          _buildModeButton("Điện năng", Icons.energy_savings_leaf, 0),
+          _buildModeButton("Số tiền", Icons.money, 1),
         ],
       ),
     );
@@ -365,5 +372,13 @@ class _SelectChargingState extends State<SelectCharging>
         ],
       ),
     );
+  }
+
+  void obseverData() {
+    viewModel.ports.stream.listen((ports) {
+      setState(() {
+        this.ports = ports;
+      });
+    });
   }
 }

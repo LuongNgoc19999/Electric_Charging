@@ -12,7 +12,7 @@ class ChargingWaveScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(),
+            _buildHeader(context),
 
             const SizedBox(height: 16),
 
@@ -31,13 +31,18 @@ class ChargingWaveScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Icon(Icons.arrow_back, size: 30, color: Colors.green),
+        children: [
+          IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back, size: 30, color: Colors.green)
+          ),
           Text(
             "Đang sạc",
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
