@@ -53,6 +53,8 @@ dependencies:
 #  flutter_appauth: ^11.0.0
   flutter_secure_storage: ^9.2.4
   webview_flutter: ^4.7.0
+  flutter_inappwebview: ^6.1.5
+  get: ^4.7.3
 
 
 dev_dependencies:
