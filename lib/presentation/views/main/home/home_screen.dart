@@ -1,7 +1,4 @@
-import 'package:electric_charging/data/models/ChargingStation.dart';
 import 'package:electric_charging/data_new/models/StationModel.dart';
-import 'package:electric_charging/presentation/views/charging_detail/ChargingDetail.dart';
-import 'package:electric_charging/presentation/views/charging_detail/StationDetail.dart';
 import 'package:electric_charging/presentation/views/main/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -86,18 +83,18 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: _filteredItems.isEmpty
                 ? const Center(
-              child: Text(
-                "Không tìm thấy kết quả",
-                style: TextStyle(fontSize: 16, color: Colors.grey),
-              ),
-            )
+                    child: Text(
+                      "Không tìm thấy kết quả",
+                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                    ),
+                  )
                 : ListView.builder(
-              itemCount: _filteredItems.length,
-              itemBuilder: (context, index) {
-                final item = _filteredItems[index];
-                return StationItem(item: item);
-              },
-            ),
+                    itemCount: _filteredItems.length,
+                    itemBuilder: (context, index) {
+                      final item = _filteredItems[index];
+                      return StationItem(item: item);
+                    },
+                  ),
           ),
         ],
       ),

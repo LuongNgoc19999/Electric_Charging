@@ -1,11 +1,13 @@
 import 'package:electric_charging/data_new/source/remote_data_source.dart';
 import 'package:electric_charging/l10n/app_localizations.dart';
 import 'package:electric_charging/presentation/view_models/login_viewmodel.dart';
+import 'package:electric_charging/presentation/view_models/oauth_viewmodel.dart';
 import 'package:electric_charging/presentation/view_models/register_viewmodel.dart';
 import 'package:electric_charging/presentation/views/login/login_screen.dart';
 import 'package:electric_charging/presentation/views/login_webview/login_webview_screen.dart';
 import 'package:electric_charging/presentation/views/main/home/home_viewmodel.dart';
 import 'package:electric_charging/presentation/views/map/map.dart';
+import 'package:electric_charging/presentation/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:http/http.dart' as http;
@@ -30,6 +32,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginViewModel(loginUser)),
         ChangeNotifierProvider(create: (_) => RegisterViewModel()),
+        ChangeNotifierProvider(create: (_) => OAuthViewModel()),
       ],
       child: MaterialApp(
         localizationsDelegates: //AppLocalizations.localizationsDelegates,
@@ -40,7 +43,7 @@ void main() {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [Locale('en', ''), Locale('vn', '')],
-        home: LoginWebViewPage(),
+        home: SplashScreen(),
       ),
     ),
   );

@@ -55,6 +55,9 @@ dependencies:
   webview_flutter: ^4.7.0
   flutter_inappwebview: ^6.1.5
   get: ^4.7.3
+  openid_client: ^0.4.9+2
+  shared_preferences: ^2.5.4
+  device_info_plus: ^12.3.0
 
 
 dev_dependencies:
